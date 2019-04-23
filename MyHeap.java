@@ -69,7 +69,7 @@ public class MyHeap{
       counter*=2;
       numRows++;
     }
-    for(int i = counter/2 + 1; i > -1;i--){
+    for(int i = arr.length-1; i > -1;i--){
       pushDown(arr,i,arr.length);
     }
   }
@@ -102,16 +102,31 @@ public class MyHeap{
       }
     }
   }
-  public static void main(String[] args){
-    int size = 7;
-    int[] data = new int[size];
-    Random r = new Random();
-    for(int i = 0; i < size; i ++){
-      data[i]=r.nextInt()%100;
+  public static boolean isSorted(int[] arr){
+    for(int i = 0; i < arr.length - 1; i ++){
+      if(arr[i]>arr[i+1]){
+        return false;
+      }
     }
-    heapsort(data);
-    System.out.println(MyHeap.toString(data));
-    System.out.print(-1851031353< -2142285266);
+    return true;
+  }
+  public static void main(String[] args){
+
+    for(int i = 0; i < 20; i++){
+      int size = 28;
+      int[] data = new int[size];
+      Random r = new Random();
+      for(int j = 0; j < size; j ++){
+        data[j]=r.nextInt();
+      }
+      heapsort(data);
+      System.out.println(MyHeap.toString(data));
+
+      System.out.println(isSorted(data));
+      System.out.println("\n");
+      //size*=2;
+    }
+
     // data = new int[1];
     // heapify(data);
     // data = new int[2];
